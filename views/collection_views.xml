@@ -1,0 +1,43 @@
+<odoo>
+    <record id="view_collection_form" model="ir.ui.view">
+        <field name="name">collection.form</field>
+        <field name="model">collection.manager.collection</field>
+        <field name="arch" type="xml">
+            <form string="Collection">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="owner_id"/>
+                        <field name="category_id"/>
+                        <field name="item_count" readonly="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Import Collections" type="object" name="action_import_collections" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_collection_tree" model="ir.ui.view">
+        <field name="name">collection.tree</field>
+        <field name="model">collection.manager.collection</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="owner_id"/>
+                <field name="category_id"/>
+                <field name="item_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_collection_manager" model="ir.actions.act_window">
+        <field name="name">Collections</field>
+        <field name="res_model">collection.manager.collection</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_collection_tree"/>
+    </record>
+</odoo>
